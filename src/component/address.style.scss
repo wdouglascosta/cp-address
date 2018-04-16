@@ -1,0 +1,25 @@
+cp-address{
+    h1 {
+        color: #00A998;
+        padding: 0;
+    }
+    button{
+        border: none;
+        background: #49aa98;
+        padding: 8px 24px;
+        color: #FFF;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    div.bkg{
+        width: 400px;
+        height: 500px;
+        background: whitesmoke;
+        box-shadow: gray;
+    }
+    div.row{
+        width: 100%;
+        padding-top: 15px;
+    }
+
+}

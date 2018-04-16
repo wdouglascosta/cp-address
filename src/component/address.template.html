@@ -1,0 +1,47 @@
+<div class="bkg">
+    <div class="row">
+        <label>Country</label>
+        <br>
+        <input type="text" name="country" placeholder="País" cp-model="$ctrl.address.country">
+    </div>
+    <div class="row">
+        <input placeholder="CEP" cp-model="$ctrl.address.cep"/>
+        <button cp-click="$ctrl.buscaCep($ctrl.address)"> clique aqui</button>
+    </div>
+    <div class="row">
+        <input placeholder="UF" cp-model="$ctrl.address.uf" />
+    </div>
+    <div class="row">
+        <input placeholder="Cód. UF" cp-model="$ctrl.address.ufCode" />
+    </div>
+    <div class="row">
+        <input placeholder="Localidade" cp-model="$ctrl.address.city"/>
+    </div>
+    <div class="row">
+        <input placeholder="Cód. IBGE" cp-model="$ctrl.address.ibgecode"/>
+    </div>
+    <div class="row">
+        <input placeholder="Bairro" cp-model="$ctrl.address.neighborhood" />
+    </div>
+    <div class="row">
+            <input placeholder="Tipo Logradouro" cp-model="$ctrl.address.streetType" />
+    </div>
+    <div class="row">
+        <input placeholder="Logradouro" cp-model="$ctrl.address.street" />
+    </div>
+    <div class="row">
+        <input placeholder="Número" cp-model="$ctrl.address.number"/>
+    </div>
+    <div class="row">
+        <input placeholder="Complemento" cp-model="$ctrl.address.information"/>
+    </div>
+    <div class="row">
+        <input placeholder="Latitude" cp-model="$ctrl.address.latitude"/>
+    </div>
+    <div class="row">
+        <input placeholder="Longitude" cp-model="$ctrl.address.longitude"/>
+    </div>
+    <div class="row">
+        <button type="submit" >teste</button>
+        </div>
+</div>
