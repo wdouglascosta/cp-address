@@ -10,7 +10,8 @@
 </head>
 
 <style>
-    body, html{
+    body,
+    html {
         width: 100%;
         height: 100%;
         background: #F5F5F5;
@@ -18,34 +19,70 @@
         align-items: center;
         justify-content: center;
     }
-    .col-md-6{
+
+    .col-md-6 {
         width: 600px;
         height: 500px;
     }
+
 </style>
 
 <body>
 
     <div class="col-md-6">
-            <cp-address #myComponent></cp-address>
+        <cp-address #myComponent></cp-address>
     </div>
-    
+
     <script src="dist/cp-address.js"></script>
 
     <script>
+
         capivara.componentBuilder('myComponent')
             .constants({
-                hiddenZip: false,
-                hiddenCountry: false,
-                hiddenStreet: false,
-                hiddenInformation: false,
-                hiddenNumber: false,
-                hiddenNeighborhood: false,
-                hiddenCity: false,
-                hiddenUf: false,
-                hiddenCityCode: false,
-                hiddenStateCode: false,
-                hiddenCoordinates: false
+                zip: {
+                    hidden: false,
+                    required: true
+                },
+                country: {
+                    hidden: false,
+                    required: true
+                },
+                street: {
+                    hidden: false,
+                    required: true
+                },
+                information: {
+                    hidden: false,
+                    required: true
+                },
+                number: {
+                    hidden: false,
+                    required: true
+                },
+                neighborhood: {
+                    hidden: false,
+                    required: true
+                },
+                city: {
+                    hidden: false,
+                    required: true
+                },
+                uf: {
+                    hidden: false,
+                    required: true
+                },
+                cityCode: {
+                    hidden: false,
+                    required: true
+                },
+                stateCode: {
+                    hidden: false,
+                    required: true
+                },
+                coordinates: {
+                    hidden: false,
+                    required: true
+                }
             })
             .build();
     </script>

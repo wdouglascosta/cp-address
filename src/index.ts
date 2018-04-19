@@ -23,17 +23,18 @@ const Component = {
      */
     constants: [
         'lang',
-        'hiddenZip',
-        'hiddenCountry',
-        'hiddenStreet',
-        'hiddenInformation',
-        'hiddenNumber',
-        'hiddenNeighborhood',
-        'hiddenCity',
-        'hiddenUf',
-        'hiddenCityCode',
-        'hiddenStateCode',
-        'hiddenCoordinates'
+        'zip',
+        'street',
+        'country',
+        'street',
+        'information',
+        'number',
+        'neighborhood',
+        'city',
+        'uf',
+        'cityCode',
+        'stateCode',
+        'coordinates'
     ],
     /**
      * @name functions

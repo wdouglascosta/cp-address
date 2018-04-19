@@ -1,183 +1,73 @@
-<!-- <div class="bkg">
-    <div class="cp-row" cp-hide="$ctrl.$constants.hiddenCountry">
-        <div class="cp-row-item">
-            <label class="cp-address-label">País</label>
-            <br>
-            <input class="cp-address-field" type="text" name="country" placeholder="País" cp-model="$ctrl.address.country">
-        </div>
-    </div>
-
-    <div class="cp-row" cp-hide="$ctrl.$constants.hiddenZip">
-        <div class="cp-row-item">
-            <label class="cp-address-label">Cep</label>
-            <br>
-            <input class="cp-address-field" placeholder="CEP" cp-model="$ctrl.address.cep" cp-blur="$ctrl.buscaCep($ctrl.address)"/>
-        </div>
-    </div>
-
-    <div class="cp-row" cp-hide="$ctrl.$constants.hiddenStreet">
-        <div class="cp-row-item">
-            <label class="cp-address-label">Logradouro</label>
-            <input class="cp-address-field" placeholder="Tipo Logradouro" cp-model="$ctrl.address.streetType" />
-        </div>
-        <div class="cp-row-item">
-            <br>
-            <input class="cp-address-field" placeholder="Logradouro" cp-model="$ctrl.address.street" />
-        </div>
-    </div>
-
-    <div class="cp-row" cp-hide="$ctrl.$constants.hiddenInformation">
-        <div class="cp-row-item">
-            <label class="cp-address-label">Complemento</label>
-            <br>
-            <input class="cp-address-field" placeholder="Complemento" cp-model="$ctrl.address.information" />
-        </div>
-    </div>
-
-    <div class="cp-row">
-        <div class="cp-row-item" cp-hide="$ctrl.$constants.hiddenNumber">
-            <label class="cp-address-label">Número</label>
-            <br>
-            <input class="cp-address-field" placeholder="Número" cp-model="$ctrl.address.number" />
-        </div>
-    </div>
-
-    <div class="cp-row">
-        <div class="cp-row-item" cp-hide="$ctrl.$constants.hiddenNeighborhood">
-            <label class="cp-address-label">Bairro</label>
-            <br>
-            <input class="cp-address-field" placeholder="Bairro" cp-model="$ctrl.address.neighborhood" />
-        </div>
-    </div>
-
-    <div class="cp-row" cp-hide="$ctrl.$constants.hiddenCity">
-        <div class="cp-row-item">
-            <label class="cp-address-label">Cidade</label>
-            <br>
-            <input class="cp-address-field" placeholder="Localidade" cp-model="$ctrl.address.city" />
-        </div>
-    </div>
-
-    <div class="cp-row" cp-hide="$ctrl.$constants.hiddenUf">
-        <div class="cp-row-item">
-            <label class="cp-address-label">Estado</label>
-            <br>
-            <input class="cp-address-field" placeholder="UF" cp-model="$ctrl.address.uf" />
-            <input class="cp-address-field" placeholder="Localidade" cp-model="$ctrl.address.city" />
-        </div>
-    </div>
-
-
-
-    <div class="cp-row">
-        <div class="cp-row-item" cp-hide="$ctrl.$constants.hiddenStateCode">
-            <label class="cp-address-label">Cód. Estadual</label>
-            <br>
-            <input class="cp-address-field" placeholder="Cód. UF" cp-model="$ctrl.address.ufCode" />
-        </div>
-    </div>
-
-
-
-    <div class="cp-row">
-        <div class="cp-row-item" cp-hide="$ctrl.$constants.hiddenCityCode">
-            <label class="cp-address-label">Cód. Municipal</label>
-            <br>
-            <input class="cp-address-field" placeholder="Cód. IBGE" cp-model="$ctrl.address.ibgecode" />
-            <input class="cp-address-field" placeholder="Cód. UF" cp-model="$ctrl.address.ufCode" />
-        </div>
-    </div>
-
-    <div class="cp-row" cp-hide="$ctrl.$constants.hiddenCoordinates">
-
-        <div class="cp-row-item">
-            <label class="cp-address-label">Latitude</label>
-            <br>
-            <input class="cp-address-field" placeholder="Latitude" cp-model="$ctrl.address.latitude" />
-        </div>
-        <div class="cp-row-item">
-            <label class="cp-address-label">Longitude</label>
-            <input class="cp-address-field" placeholder="Longitude" cp-model="$ctrl.address.longitude" />
-        </div>
-    </div>
-
-
-
-    <div class="cp-row">
-        <button type="submit">teste</button>
-    </div>
-</div> -->
-
-
-
-
-<!-- <TODO:>
-    Fazer busca do cep apenas quando o cep estiver completo <br>
-    Quando preencho um numero ou Complemento e pesquiso um CEP ele limpas esses campos <br>
-    Finalizar traduções <br>
-    Feedback de CEP não encontrado <br> <br> 
-</TODO:> -->
 <div class="cp-address-container">
-    <div class="cp-address-row " cp-hide="$ctrl.$constants.hiddenCountry">
+    <div class="cp-address-row " cp-hide="$ctrl.$constants.country.hidden">
         <div class="cp-input-floating cp-flex-1">
-            <input class="cp-input cp-address-cep" cp-model="$ctrl.address.cep" cp-blur="$ctrl.buscaCep($event)" type="text">
-            <label class="form-label cp-address-label " cp-class="{ 'active' : $ctrl.address.cep ? true : false }">
+            <input class="cp-input cp-address-cep" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.zip.required && !$ctrl.address.cep) }"
+                cp-model="$ctrl.address.cep" cp-keypress.enter="$ctrl.searchZipCode($event)" cp-blur="$ctrl.searchZipCode($event)"
+                type="text">
+            <label class="form-label cp-address-label " cp-class="{ 'active' : $ctrl.address.cep }">
                 ${ labels.CEP }
             </label>
         </div>
-        <select class="cp-select cp-flex-1">
+        <select class="cp-select ">
             <option value="001" selected="selected" disabled>Brasil</option>
         </select>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenStreet">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.street.hidden">
         <div class="cp-input-floating cp-25">
-            <input class="cp-input" cp-model="$ctrl.address.streetType" type="text">
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.streetType ? true : false }">
+            <input class="cp-input" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.street.required && !$ctrl.address.streetType) }"
+                cp-model="$ctrl.address.streetType" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" type="text">
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.streetType }">
                 ${ labels.streetType }
             </label>
         </div>
         <div class="cp-input-floating cp-flex-1">
-            <input class="cp-input cp-flex-1" cp-model="$ctrl.address.street" />
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.street ? true : false }">
+            <input class="cp-input cp-flex-1" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.street.required && !$ctrl.address.street) }"
+                cp-model="$ctrl.address.street" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.street }">
                 ${ labels.street }
             </label>
         </div>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenNumber">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.number.hidden">
         <div class="cp-input-floating cp-25">
-            <input class="cp-input" cp-model="$ctrl.address.number" />
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.number ? true : false }">
+            <input class="cp-input" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.number.required && !$ctrl.address.number) }"
+                cp-model="$ctrl.address.number" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" cp-blur="$ctrl.searchAccuratedCoords()"/>
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.number }">
                 ${ labels.number }
             </label>
         </div>
         <div class="cp-input-floating cp-flex-1">
-            <input class="cp-input cp-100" cp-model="$ctrl.address.information" />
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.information ? true : false }">
+            <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.information.required && !$ctrl.address.information) }"
+                cp-model="$ctrl.address.information" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.information }">
                 ${ labels.information }
             </label>
         </div>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenNeighborhood">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.neighborhood.hidden">
         <div class="cp-input-floating cp-flex-1">
-            <input class="cp-input cp-100" cp-model="$ctrl.address.neighborhood" />
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.neighborhood ? true : false }">
+            <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.neighborhood.required && !$ctrl.address.neighborhood) }"
+                cp-model="$ctrl.address.neighborhood" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.neighborhood }">
                 ${ labels.neighborhood }
             </label>
         </div>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenNeighborhood">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.city.hidden">
         <div class="cp-input-floating cp-flex-1">
-            <input class="cp-input cp-100" cp-model="$ctrl.address.city" cp-hide="$ctrl.$constants.hiddenCity" />
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.city ? true : false }">
+            <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.city.required && !$ctrl.address.city) }"
+                cp-model="$ctrl.address.city" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.city }">
                 ${ labels.city }
             </label>
         </div>
         <div class="cp-input-floating cp-flex-1">
-            <select class="cp-select" cp-model="$ctrl.address.uf">
+            <select class="cp-select cp-input" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.uf.required && !$ctrl.address.uf) }"
+                cp-model="$ctrl.address.uf" cp-keypress.enter="$ctrl.focusFirstInputEmpty()">
                 <option value="AC" selected="selected">Acre</option>
                 <option value="AL">Alagoas</option>
                 <option value="AP">Amapá</option>
@@ -206,52 +96,44 @@
                 <option value="SE">Sergipe</option>
                 <option value="TO">Tocantins</option>
             </select>
-            <!-- <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.state ? true : false }">
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.uf }">
                 ${ labels.state }
-            </label> -->
+            </label>
         </div>
     </div>
 
     <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenCodes">
         <div class="cp-input-floating cp-flex-1">
-            <input class="cp-input cp-100" cp-model="$ctrl.address.ibgecode" cp-hide="$ctrl.$constants.hiddenCityCode" />
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.ibgecode ? true : false }">
+            <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.cityCode.required && !$ctrl.address.ibgecode) }"
+                cp-model="$ctrl.address.ibgecode" cp-hide="$ctrl.$constants.cityCode.hidden" cp-keypress.enter="$ctrl.focusFirstInputEmpty()"
+            />
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.ibgecode }">
                 ${ labels.ibgecode }
             </label>
         </div>
         <div class="cp-input-floating cp-flex-1">
-            <input class="cp-input cp-100" cp-model="$ctrl.address.ufCode" cp-hide="$ctrl.$constants.hiddenStateCode" />
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.ufCode ? true : false }">
+            <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.stateCode.required && !$ctrl.address.ufCode) }"
+                cp-model="$ctrl.address.ufCode" cp-hide="$ctrl.$constants.stateCode.hidden" cp-keypress.enter="$ctrl.focusFirstInputEmpty()"
+            />
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.ufCode }">
                 ${ labels.statecode }
             </label>
         </div>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenCoordinates">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.coordinates.hidden">
         <div class="cp-input-floating cp-flex-1">
-            <input class="cp-input cp-100" cp-model="$ctrl.address.latitude" />
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.latitude ? true : false }">
+            <input class="cp-input cp-100" cp-class="{'cp-invalid-required' : ($ctrl.$constants.coordinates.required && !$ctrl.address.latitude)}"
+                cp-model="$ctrl.address.latitude" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.latitude }">
                 ${ labels.latitude }
             </label>
         </div>
         <div class="cp-input-floating cp-flex-1">
-            <input class="cp-input cp-100" cp-model="$ctrl.address.longitude" />
-            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.longitude ? true : false }">
+            <input class="cp-input cp-100" cp-class="{'cp-invalid-required' : ($ctrl.$constants.coordinates.required && !$ctrl.address.longitude)}"
+                cp-model="$ctrl.address.longitude" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
+            <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.longitude }">
                 ${ labels.longitude }
             </label>
         </div>
     </div>
-
-
-</div>
-</div>
-
-
-
-
-
-<div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenStreet">
-    <div class="cp-row-item">
-
-    </div>
-</div>
