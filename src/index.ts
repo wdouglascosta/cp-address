@@ -22,6 +22,7 @@ const Component = {
      * @description Declares the constants that will be accepted by component. See https://capivarajs.github.io/components.html#constants
      */
     constants: [
+        'lang',
         'hiddenZip',
         'hiddenCountry',
         'hiddenStreet',
