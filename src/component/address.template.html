@@ -33,7 +33,8 @@
     <div class="cp-address-row" cp-hide="$ctrl.$constants.number.hidden">
         <div class="cp-input-floating cp-25">
             <input class="cp-input" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.number.required && !$ctrl.address.number) }"
-                cp-model="$ctrl.address.number" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" cp-blur="$ctrl.searchAccuratedCoords()"/>
+                cp-model="$ctrl.address.number" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" cp-blur="$ctrl.searchAccuratedCoords()"
+            />
             <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.number }">
                 ${ labels.number }
             </label>

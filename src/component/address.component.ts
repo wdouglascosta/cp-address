@@ -1,3 +1,8 @@
+/**
+ * This component create a standard form to Brazilian Address
+ * previse the search by the zip code
+ *  @author Gumga IT
+ */
 import { Address } from './address.interface';
 import { constants } from 'fs';
 import { Masked } from './docs/masks'
@@ -7,7 +12,6 @@ export class CapivaraAddress {
     public $constants;
     public $functions;
     public $bindings;
-
     private pessoas;
     private address: Address;
     private element;
@@ -33,7 +37,8 @@ export class CapivaraAddress {
     }
 
     /**
-     * @method void 
+     * @method void verify if the form is valid, considering 
+     * the invalid data and required fields empty
      */
     verifyValidForm() {
         if (this.element.querySelectorAll('input.cp-input.cp-invalid-required, select.cp-input.cp-invalid-required, input.cp-field-error').length > 0) {
@@ -42,7 +47,14 @@ export class CapivaraAddress {
             this.element.classList.remove('cp-invalid')
         }
     }
-
+    /**
+     * 
+     * @method return Promisse with the answer from a HTTP request
+     * This method is asynchronous
+     * resp: contains the JSON with the response text of the request
+     * rej: contains the JSON with the status text of the request
+     * @param url 
+     */
     getFromApi(url): Promise<any> {
         return new Promise((resp, rej) => {
             const httpReq = new XMLHttpRequest();
@@ -58,6 +70,12 @@ export class CapivaraAddress {
         });
     }
 
+    /**
+     * @method void
+     * Makes the search of the zip code in a external API;
+     * Verify if the lenght data corresponds with a brazilian zip code;
+     * @param   
+     */
     searchZipCode($event) {
         this.address.cep = $event.target.value;
         if (this.address && this.address.cep && this.address.cep.length == 9) {
@@ -69,7 +87,15 @@ export class CapivaraAddress {
         }
     }
 
-    searchAccuratedCoords(searchCoordsByNumer) {
+    /**
+     * @method void
+     * The address retourned by zip code contains a generic geografic coordinates, without
+     * consider the number, this method makes one more request looking for more accurated coordinates
+     * considering the number.
+     * If the search returns a valid data, the fields of coordinates are updated
+     * 
+     */
+    searchAccuratedCoords() {
         if (this.address.latitude && this.address.longitude) {
             const formattedAddress = `${this.address.streetType} ${this.address.street}, ${this.address.number} ${this.address.neighborhood} - ${this.address.uf} `;
             this.getFromApi('http://maps.google.com/maps/api/geocode/json?address=' + formattedAddress).then((resp) => {
@@ -79,14 +105,15 @@ export class CapivaraAddress {
                         this.address.latitude = coords.lat || this.address.latitude;
                         this.address.longitude = coords.lng || this.address.longitude;
                     }
-                } 
+                }
             });
         }
     }
 
     /**
-     * @method void Preenche os dados do endereço de acordo com o objeto retorno.
-     * @param addressFound string - Objeto que a função de busca retorna 
+     * @method void 
+     * Fill the address data with the object found 
+     * @param addressFound string - Object found from the search by zip code
      */
     autoFill(addressFound) {
         if (addressFound.resultado == "0") {
@@ -105,12 +132,17 @@ export class CapivaraAddress {
             setTimeout(() => this.focusFirstInputEmpty(), 50);
         }
     }
-
+    /**
+     * @method void
+     * this method get all inputs and look for the first empty
+     * Give the focus to it
+     * It's called after the auto fill of data from zip code search
+     * and always that some input have focus and the key "Enter" is pressionated 
+     */
     focusFirstInputEmpty() {
         const inputToFocus: any = Array.from(this.element.querySelectorAll('input.cp-input')).filter((input: any) => input.value == '')[0];
         if (inputToFocus) {
             inputToFocus.focus();
         }
     }
-
 }
