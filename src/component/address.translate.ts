@@ -11,7 +11,9 @@ export default {
         ibgecode: 'City Code',
         statecode: 'State Code',
         latitude: 'Latitude',
-        longitude: 'Longitude'
+        longitude: 'Longitude',
+        btnFillAnAddress: 'Fill an address',
+        btnOpenMaps: 'Open in Google Maps'
     },
     'pt-br': {
         CEP: 'CEP',
@@ -25,6 +27,8 @@ export default {
         ibgecode: 'Cód. Municipal - IBGE',
         statecode: 'Cód. Estadual - IBGE',
         latitude: 'Latitude',
-        longitude: 'Longitude'
+        longitude: 'Longitude',
+        btnFillAnAddress: 'Preencha um endereço',
+        btnOpenMaps: 'Abrir no Google Maps'
     }
 }

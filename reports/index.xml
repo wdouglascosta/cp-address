@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="1">
+
+  <testsuite name="index"
+    errors="1" failures="0" hostname="" id="" package="index" skipped="0"
+    tests="1" time="0.003000" timestamp="Tue, 24 Apr 2018 19:41:55 GMT">
+  
+    <testcase name="cp-address" classname="index" time="0.003000" assertions="0">
+    </testcase>
+  
+
+  
+    <system-err>
+        Error while running [Index / cp-address]:
+
+  ReferenceError: Enter is not defined
+    at Object.cp-address (/home/wdouglas/componentes/cp-address/test/e2e/index.js:7:15)
+    at Module.call (/usr/lib/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /usr/lib/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /usr/lib/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:176:11)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>

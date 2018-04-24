@@ -99,7 +99,7 @@ cp-address{
             // align-items: center;
             // justify-content: center;
         }
-        .lb-active{
+        .lb-active {
             background: red;
             transform: translateY(-125%);
             font-size: .75em;
@@ -112,6 +112,30 @@ cp-address{
             background-color: #fff;
             z-index: 10;
             transition: transform 150ms ease-out, font-size 150ms ease-out;
+          }
+          .cp-address-btn {
+              background:transparent;
+              border: none;
+              height: 100%;
+              .svg{
+                width: 25%;
+                height: 25%;
+              }
+          }
+          .svg-icon {
+            width: 40px;
+            height: 80%;
+          }
+          
+          .svg-icon path,
+          .svg-icon polygon,
+          .svg-icon rect {
+            fill:#999;
+          }
+          
+          .svg-icon circle {
+            stroke: red;
+            stroke-width: 1;
           }
     }
 

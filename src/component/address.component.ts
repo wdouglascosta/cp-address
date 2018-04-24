@@ -7,16 +7,17 @@ import { Address } from './address.interface';
 import { constants } from 'fs';
 import { Masked } from './docs/masks'
 import translate from './address.translate';
+import { TIMEOUT } from 'dns';
 
 export class CapivaraAddress {
     public $constants;
     public $functions;
     public $bindings;
-    private pessoas;
     private address: Address;
     private element;
     private labels;
-    private ativo;
+    private enableMaps = true;
+    private buttonTitle;
 
     constructor(scope) {
         this.element = scope.element;
@@ -34,6 +35,21 @@ export class CapivaraAddress {
 
     $onChanges() {
         this.verifyValidForm();
+        this.verifyEnableMaps();
+    }
+
+    verifyEnableMaps(){
+        if (this.address &&
+            this.address.streetType &&
+            this.address.street &&
+            this.address.neighborhood &&
+            this.address.city){
+                this.enableMaps = false;
+                this.buttonTitle = this.$constants.openMaps;
+            } else {
+                this.enableMaps = true;
+                this.buttonTitle = this.$constants.btnFillAnAddress;
+            }
     }
 
     /**
@@ -87,6 +103,12 @@ export class CapivaraAddress {
         }
     }
 
+    private formatAddress() {
+        var formattedAddress = 'empty';
+
+        return formattedAddress;
+    }
+
     /**
      * @method void
      * The address retourned by zip code contains a generic geografic coordinates, without
@@ -96,8 +118,18 @@ export class CapivaraAddress {
      * 
      */
     searchAccuratedCoords() {
-        if (this.address.latitude && this.address.longitude) {
-            const formattedAddress = `${this.address.streetType} ${this.address.street}, ${this.address.number} ${this.address.neighborhood} - ${this.address.uf} `;
+        var formattedAddress = '';
+        if (this.address &&
+            this.address.streetType &&
+            this.address.street &&
+            this.address.neighborhood &&
+            this.address.uf) {
+            if (!this.address.number) {
+                this.address.number = '';
+            }
+            formattedAddress = `${this.address.streetType} ${this.address.street}, ${this.address.number} ${this.address.neighborhood} ${this.address.city}`;
+        }
+        if (formattedAddress != '') {
             this.getFromApi('http://maps.google.com/maps/api/geocode/json?address=' + formattedAddress).then((resp) => {
                 if ((resp.results.length > 0) && (resp.results[0].geometry.location)) {
                     const coords = resp.results[0].geometry.location;
@@ -109,6 +141,7 @@ export class CapivaraAddress {
             });
         }
     }
+
 
     /**
      * @method void 
@@ -144,5 +177,12 @@ export class CapivaraAddress {
         if (inputToFocus) {
             inputToFocus.focus();
         }
+    }
+
+    openMaps() {
+        var formattedAddress = `${this.address.streetType} ${this.address.street}${this.address.number}, ${this.address.city}`
+        var maps = 'https://www.google.com.br/maps/place/' + formattedAddress;
+        console.log(maps)
+        window.open(maps);
     }
 }

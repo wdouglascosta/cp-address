@@ -1,0 +1,87 @@
+17:08:44.093 INFO - Selenium build info: version: '3.0.1', revision: '1969d75'
+17:08:44.093 INFO - Launching a standalone Selenium Server
+2018-04-24 17:08:44.106:INFO::main: Logging initialized @174ms
+17:08:44.145 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+ registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match the current platform LINUX
+17:08:44.145 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+ registration capabilities Capabilities [{browserName=MicrosoftEdge, version=, platform=WINDOWS}] does not match the current platform LINUX
+17:08:44.145 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+17:08:44.145 INFO - Driver provider com.opera.core.systems.OperaDriver registration is skipped:
+Unable to create new instances on this machine.
+17:08:44.145 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+17:08:44.146 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+17:08:44.146 INFO - Driver provider org.openqa.selenium.safari.SafariDriver registration is skipped:
+ registration capabilities Capabilities [{browserName=safari, version=, platform=MAC}] does not match the current platform LINUX
+2018-04-24 17:08:44.171:INFO:osjs.Server:main: jetty-9.2.15.v20160210
+2018-04-24 17:08:44.186:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@32d992b2{/,null,AVAILABLE}
+2018-04-24 17:08:44.196:INFO:osjs.ServerConnector:main: Started ServerConnector@68be2bc2{HTTP/1.1}{0.0.0.0:5555}
+2018-04-24 17:08:44.196:INFO:osjs.Server:main: Started @264ms
+17:08:44.196 INFO - Selenium Server is up and running
+17:08:44.353 INFO - SessionCleaner initialized with insideBrowserTimeout 0 and clientGoneTimeout 1800000 polling every 180000
+17:08:44.375 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Index, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+17:08:44.386 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Index, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.35.528139 (47ead77cb35ad2a9a83248b292151462a66cd881) on port 29629
+Only local connections are allowed.
+17:08:44.639 INFO - Attempting bi-dialect session, assuming Postel's Law holds true on the remote end
+17:08:44.967 INFO - Detected dialect: OSS
+17:08:44.989 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Index, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+17:08:45.005 INFO - Executing: [get: http://localhost:1111])
+17:08:45.184 INFO - Done: [get: http://localhost:1111]
+17:08:47.192 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.cep"]])
+17:08:47.213 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.cep"]]
+17:08:47.217 INFO - Executing: [send keys: 0 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.cep"]], [8, 7, 2, 1, 0, 0, 2, 8]])
+17:08:47.348 INFO - Done: [send keys: 0 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.cep"]], [8, 7, 2, 1, 0, 0, 2, 8]]
+17:08:47.354 INFO - Executing: [send keys to active: []])
+17:08:47.366 INFO - Done: [send keys to active: []]
+17:08:50.374 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.streetType"]])
+17:08:50.388 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.streetType"]]
+17:08:50.393 INFO - Executing: [get element attribute: 1 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.streetType"]], value])
+17:08:50.400 INFO - Done: [get element attribute: 1 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.streetType"]], value]
+17:08:50.403 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.street"]])
+17:08:50.419 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.street"]]
+17:08:50.422 INFO - Executing: [get element attribute: 2 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.street"]], value])
+17:08:50.432 INFO - Done: [get element attribute: 2 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.street"]], value]
+17:08:50.435 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.neighborhood"]])
+17:08:50.450 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.neighborhood"]]
+17:08:50.453 INFO - Executing: [get element attribute: 3 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.neighborhood"]], value])
+17:08:50.460 INFO - Done: [get element attribute: 3 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.neighborhood"]], value]
+17:08:50.466 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.city"]])
+17:08:50.482 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.city"]]
+17:08:50.484 INFO - Executing: [get element attribute: 4 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.city"]], value])
+17:08:50.490 INFO - Done: [get element attribute: 4 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.city"]], value]
+17:08:50.496 INFO - Executing: [find element: By.cssSelector: select[cp-model="$ctrl.address.uf"]])
+17:08:50.513 INFO - Done: [find element: By.cssSelector: select[cp-model="$ctrl.address.uf"]]
+17:08:50.515 INFO - Executing: [get element attribute: 5 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: select[cp-model="$ctrl.address.uf"]], value])
+17:08:50.521 INFO - Done: [get element attribute: 5 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: select[cp-model="$ctrl.address.uf"]], value]
+17:08:50.524 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.ibgecode"]])
+17:08:50.542 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.ibgecode"]]
+17:08:50.549 INFO - Executing: [get element attribute: 6 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.ibgecode"]], value])
+17:08:50.555 INFO - Done: [get element attribute: 6 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.ibgecode"]], value]
+17:08:50.558 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.ufCode"]])
+17:08:50.573 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.ufCode"]]
+17:08:50.577 INFO - Executing: [get element attribute: 7 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.ufCode"]], value])
+17:08:50.585 INFO - Done: [get element attribute: 7 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.ufCode"]], value]
+17:08:50.588 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.latitude"]])
+17:08:50.603 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.latitude"]]
+17:08:50.607 INFO - Executing: [get element attribute: 8 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.latitude"]], value])
+17:08:50.616 INFO - Done: [get element attribute: 8 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.latitude"]], value]
+17:08:50.619 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.longitude"]])
+17:08:50.635 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.longitude"]]
+17:08:50.637 INFO - Executing: [get element attribute: 9 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.longitude"]], value])
+17:08:50.646 INFO - Done: [get element attribute: 9 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.longitude"]], value]
+17:08:50.649 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.number"]])
+17:08:50.665 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.number"]]
+17:08:50.668 INFO - Executing: [send keys: 10 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.number"]], [2, 0, 2, 4]])
+17:08:50.731 INFO - Done: [send keys: 10 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.number"]], [2, 0, 2, 4]]
+17:08:50.737 INFO - Executing: [send keys to active: []])
+17:08:50.752 INFO - Done: [send keys to active: []]
+17:08:52.756 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.latitude"]])
+17:08:52.766 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.latitude"]]
+17:08:52.768 INFO - Executing: [get element attribute: 8 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.latitude"]], value])
+17:08:52.773 INFO - Done: [get element attribute: 8 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.latitude"]], value]
+17:08:52.776 INFO - Executing: [find element: By.cssSelector: input[cp-model="$ctrl.address.longitude"]])
+17:08:52.786 INFO - Done: [find element: By.cssSelector: input[cp-model="$ctrl.address.longitude"]]
+17:08:52.788 INFO - Executing: [get element attribute: 9 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.longitude"]], value])
+17:08:52.797 INFO - Done: [get element attribute: 9 [[ChromeDriver: chrome on LINUX (2141ccd05ed78b3467d7cfc63ada8439)] -> css selector: input[cp-model="$ctrl.address.longitude"]], value]
+17:08:52.802 INFO - Executing: [delete session: f94e38d8-8a08-4194-84da-29a3415c2e7d])
+17:08:52.876 INFO - Done: [delete session: f94e38d8-8a08-4194-84da-29a3415c2e7d]
