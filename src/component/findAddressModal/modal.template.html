@@ -1,0 +1,72 @@
+<div class="cp-address-modal">
+    <div class="cp-address-modal-content">
+        <h2>Buscar Cep</h2>
+
+        <div class="cp-address-container">
+            <div class="cp-address-row " cp-hide="$ctrl.$constants.hiddenCountry">
+                <div class="cp-input-floating cp-flex-1">
+                        <select class="cp-select cp-input" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.uf.required && !$ctrl.address.uf) }"
+                        cp-model="$ctrl.address.uf" cp-keypress.enter="$ctrl.focusFirstInputEmpty()">
+                        <option value="AC" selected="selected">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                    <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.uf }">
+                            ${ params.state }
+                    </label>
+                </div>
+
+                <div class="cp-input-floating cp-flex-1">
+                        <select class="cp-select cp-input" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.uf.required && !$ctrl.address.uf) }"
+                        cp-model="$ctrl.address.uf" cp-keypress.enter="$ctrl.focusFirstInputEmpty()">
+                        <option value="AC" selected="selected">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        
+                    </select>
+                    <label class="form-label cp-address-label " cp-class="{ 'active' : $ctrl.address.cep }">
+                        ${ params.city }
+                    </label>
+                </div>
+            </div>
+
+            <div class="cp-address-row " cp-hide="$ctrl.$constants.hiddenCountry">
+                <div class="cp-input-floating cp-flex-1">
+                    <input class="cp-input cp-address-cep" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.zip.required && !$ctrl.address.cep) }"
+                        cp-model="$ctrl.address.cep" cp-keypress.enter="$ctrl.searchZipCode($event)" cp-blur="$ctrl.searchZipCode($event)"
+                        type="text">
+                    <label class="form-label cp-address-label " cp-class="{ 'active' : $ctrl.address.cep }">
+                        ${ params.street }
+                    </label>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
