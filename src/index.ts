@@ -3,7 +3,7 @@
 */
 import capivara from 'capivarajs';
 import template from './component/address.template.html';
-import style from './component/address.style.scss';
+import style from './index.scss';
 import { CapivaraAddress } from './component/address.component';
 
 const Component = {
@@ -23,18 +23,28 @@ const Component = {
      */
     constants: [
         'lang',
-        'zip',
-        'street',
-        'country',
-        'street',
-        'information',
-        'number',
-        'neighborhood',
-        'city',
-        'uf',
-        'cityCode',
-        'stateCode',
-        'coordinates'
+        'hiddenZip',
+        'requiredZip',
+        'hiddenCountry',
+        'requiredCountry',
+        'hiddenStreet',
+        'requiredStreet',
+        'hiddenInformation',
+        'requiredInformation',
+        'hiddenNumber',
+        'requiredNumber',
+        'hiddenNeighborhood',
+        'requiredNeighborhood',
+        'hiddenCity',
+        'requiredCity',
+        'hiddenUf',
+        'requiredUf',
+        'hiddenCityCode',
+        'requiredCityCode',
+        'hiddenStateCode',
+        'requiredStateCode',
+        'hiddenCoordinates',
+        'requiredCoordinates'
     ],
     /**
      * @name functions

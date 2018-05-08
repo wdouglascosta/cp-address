@@ -3,11 +3,14 @@
  * previse the search by the zip code
  *  @author Gumga IT
  */
+import capivara from 'capivarajs';
 import { Address } from './address.interface';
 import { constants } from 'fs';
 import { Masked } from './docs/masks'
 import translate from './address.translate';
 import { TIMEOUT } from 'dns';
+import modalFindAddressTemplate from './findAddressModal/modal.template.html';
+import { ModalFindAddressController } from './findAddressModal/modal.template';
 
 export class CapivaraAddress {
     public $constants;
@@ -19,8 +22,11 @@ export class CapivaraAddress {
     private enableMaps = true;
     private buttonTitle;
 
+    private modal = document.getElementsByClassName("cp-address-modal")
+
     constructor(scope) {
         this.element = scope.element;
+        this.$constants = this.$constants || {};
     }
 
     $onViewInit() {
@@ -38,18 +44,18 @@ export class CapivaraAddress {
         this.verifyEnableMaps();
     }
 
-    verifyEnableMaps(){
+    verifyEnableMaps() {
         if (this.address &&
             this.address.streetType &&
             this.address.street &&
             this.address.neighborhood &&
-            this.address.city){
-                this.enableMaps = false;
-                this.buttonTitle = this.$constants.openMaps;
-            } else {
-                this.enableMaps = true;
-                this.buttonTitle = this.$constants.btnFillAnAddress;
-            }
+            this.address.city) {
+            this.enableMaps = false;
+            this.buttonTitle = this.$constants.openMaps;
+        } else {
+            this.enableMaps = true;
+            this.buttonTitle = this.$constants.btnFillAnAddress;
+        }
     }
 
     /**
@@ -180,9 +186,67 @@ export class CapivaraAddress {
     }
 
     openMaps() {
-        var formattedAddress = `${this.address.streetType} ${this.address.street}${this.address.number}, ${this.address.city}`
-        var maps = 'https://www.google.com.br/maps/place/' + formattedAddress;
-        console.log(maps)
-        window.open(maps);
+        if (!this.enableMaps) {
+
+            var formattedAddress = `${this.address.streetType} ${this.address.street}${this.address.number}, ${this.address.city}`
+            var maps = 'https://www.google.com.br/maps/place/' + formattedAddress;
+            window.open(maps);
+        }
+    }
+
+
+    createModal(config) {
+        const ModalInstance = function (instanceConfig) {
+            const modal = document.createElement('div');
+            modal.innerHTML = modalFindAddressTemplate;
+            modal.classList.add('cp-address-modal');
+            document.body.appendChild(modal);
+
+            const close = (...args) => {
+                window.removeEventListener('keyup', onKeyPress);
+                document.body.removeChild(modal);
+                if (this.onClose) {
+                    this.onClose(...args);
+                }
+            }
+
+            const ok = (...args) => {
+                close(...args);
+                if (this.onOK) {
+                    this.onOK(...args);
+                }
+            };
+
+            const onKeyPress = (evt) => {
+                if (evt.keyCode === 27) {
+                    close();
+                }
+            };
+
+            if (config.keyboard) {
+                window.addEventListener('keyup', onKeyPress);
+            };
+
+
+            capivara.controller(modal, ModalFindAddressController);
+
+            if (modal['$scope'].scope.$ctrl.modalParams) {
+                config.params.modalInstance = this;
+                modal['$scope'].scope.$ctrl.modalParams(config.params);
+            }
+
+
+            this.close = close;
+            this.ok = ok;
+
+        };
+        return new ModalInstance(config);
+    }
+
+    openModal(){
+        const modalInstance = this.createModal({
+            keyboard: true,
+            params: Object.assign(this.$constants, this.labels)
+        })
     }
 }

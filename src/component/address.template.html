@@ -1,5 +1,5 @@
 <div class="cp-address-container">
-    <div class="cp-address-row " cp-hide="$ctrl.$constants.country.hidden">
+    <div class="cp-address-row " cp-hide="$ctrl.$constants.hiddenCountry">
         <div class="cp-input-floating cp-flex-1">
             <input class="cp-input cp-address-cep" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.zip.required && !$ctrl.address.cep) }"
                 cp-model="$ctrl.address.cep" cp-keypress.enter="$ctrl.searchZipCode($event)" cp-blur="$ctrl.searchZipCode($event)"
@@ -8,18 +8,40 @@
                 ${ labels.CEP }
             </label>
         </div>
-        <select class="cp-select ">
-            <option value="001" selected="selected" disabled>Brasil</option>
-        </select>
+        <div class="cp-input-floating" title="Não Sabe?" cp-click="openModal()">
+
+            <svg class="cp-address-svg center" viewBox="0 0 700 700">
+
+                <path d="M199.996,0C89.719,0,0,89.72,0,200c0,110.279,89.719,200,199.996,200C310.281,400,400,310.279,400,200
+                                   C400,89.72,310.281,0,199.996,0z M199.996,373.77C104.187,373.77,26.23,295.816,26.23,200
+                                   c0-95.817,77.957-173.769,173.766-173.769c95.816,0,173.772,77.953,173.772,173.769
+                                   C373.769,295.816,295.812,373.77,199.996,373.77z" />
+                <path d="M199.996,91.382c-35.176,0-63.789,28.616-63.789,63.793c0,7.243,5.871,13.115,13.113,13.115
+                                   c7.246,0,13.117-5.873,13.117-13.115c0-20.71,16.848-37.562,37.559-37.562c20.719,0,37.566,16.852,37.566,37.562
+                                   c0,20.714-16.849,37.566-37.566,37.566c-7.242,0-13.113,5.873-13.113,13.114v45.684c0,7.243,5.871,13.115,13.113,13.115
+                                   s13.117-5.872,13.117-13.115v-33.938c28.905-6.064,50.68-31.746,50.68-62.427C263.793,119.998,235.176,91.382,199.996,91.382z"
+                />
+                <path d="M200.004,273.738c-9.086,0-16.465,7.371-16.465,16.462s7.379,16.465,16.465,16.465c9.094,0,16.457-7.374,16.457-16.465
+                                   S209.098,273.738,200.004,273.738z" />
+            </svg>
+
+        </div>
+
+        <div class="cp-input-floating cp-flex-1">
+            <select class="cp-select ">
+                <option value="001" selected="selected" disabled>Brasil</option>
+            </select>
+        </div>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.street.hidden">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenStreet">
         <div class="cp-input-floating cp-25">
             <input class="cp-input" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.street.required && !$ctrl.address.streetType) }"
                 cp-model="$ctrl.address.streetType" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" type="text">
             <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.streetType }">
                 ${ labels.streetType }
             </label>
+            ${$ctrl.$constants.hiddenStreet}
         </div>
         <div class="cp-input-floating cp-flex-1">
             <input class="cp-input cp-flex-1" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.street.required && !$ctrl.address.street) }"
@@ -30,7 +52,7 @@
         </div>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.number.hidden">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenNumber">
         <div class="cp-input-floating cp-25">
             <input class="cp-input" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.number.required && !$ctrl.address.number) }"
                 cp-model="$ctrl.address.number" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" cp-blur="$ctrl.searchAccuratedCoords()"
@@ -48,7 +70,7 @@
         </div>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.neighborhood.hidden">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenNeighborhood">
         <div class="cp-input-floating cp-flex-1">
             <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.neighborhood.required && !$ctrl.address.neighborhood) }"
                 cp-model="$ctrl.address.neighborhood" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
@@ -58,7 +80,7 @@
         </div>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.city.hidden">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenCity">
         <div class="cp-input-floating cp-flex-1">
             <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.city.required && !$ctrl.address.city) }"
                 cp-model="$ctrl.address.city" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
@@ -100,13 +122,15 @@
             <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.uf }">
                 ${ labels.state }
             </label>
+            
+            
         </div>
     </div>
 
     <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenCodes">
         <div class="cp-input-floating cp-flex-1">
             <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.cityCode.required && !$ctrl.address.ibgecode) }"
-                cp-model="$ctrl.address.ibgecode" cp-hide="$ctrl.$constants.cityCode.hidden" cp-keypress.enter="$ctrl.focusFirstInputEmpty()"
+                cp-model="$ctrl.address.ibgecode" cp-hide="$ctrl.$constants.hiddenCityCode" cp-keypress.enter="$ctrl.focusFirstInputEmpty()"
             />
             <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.ibgecode }">
                 ${ labels.ibgecode }
@@ -114,7 +138,7 @@
         </div>
         <div class="cp-input-floating cp-flex-1">
             <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.stateCode.required && !$ctrl.address.ufCode) }"
-                cp-model="$ctrl.address.ufCode" cp-hide="$ctrl.$constants.stateCode.hidden" cp-keypress.enter="$ctrl.focusFirstInputEmpty()"
+                cp-model="$ctrl.address.ufCode" cp-hide="$ctrl.$constants.hiddenStateCode" cp-keypress.enter="$ctrl.focusFirstInputEmpty()"
             />
             <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.ufCode }">
                 ${ labels.statecode }
@@ -122,7 +146,7 @@
         </div>
     </div>
 
-    <div class="cp-address-row" cp-hide="$ctrl.$constants.coordinates.hidden">
+    <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenCoordinates">
         <div class="cp-input-floating cp-flex-1">
             <input class="cp-input cp-100" cp-class="{'cp-invalid-required' : ($ctrl.$constants.coordinates.required && !$ctrl.address.latitude)}"
                 cp-model="$ctrl.address.latitude" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
@@ -138,9 +162,14 @@
             </label>
         </div>
 
-        <button title="Abrir no Google Maps" class="cp-address-btn" cp-click="$ctrl.openMaps()" cp-disabled="$ctrl.enableMaps">
-            <svg class="svg-icon" viewBox="0 0 20 20">
+        <div class="cp-input-floating" cp-title="!$ctrl.enableMaps ? 'Abrir no Google Maps' : 'Preencha um endereço'" class="cp-address-btn"
+            cp-click="$ctrl.openMaps()" cp-disabled="$ctrl.enableMaps">
+
+            <svg class="cp-address-svg" viewBox="0 0 20 20">
                 <path d="M10,1.375c-3.17,0-5.75,2.548-5.75,5.682c0,6.685,5.259,11.276,5.483,11.469c0.152,0.132,0.382,0.132,0.534,0c0.224-0.193,5.481-4.784,5.483-11.469C15.75,3.923,13.171,1.375,10,1.375 M10,17.653c-1.064-1.024-4.929-5.127-4.929-10.596c0-2.68,2.212-4.861,4.929-4.861s4.929,2.181,4.929,4.861C14.927,12.518,11.063,16.627,10,17.653 M10,3.839c-1.815,0-3.286,1.47-3.286,3.286s1.47,3.286,3.286,3.286s3.286-1.47,3.286-3.286S11.815,3.839,10,3.839 M10,9.589c-1.359,0-2.464-1.105-2.464-2.464S8.641,4.661,10,4.661s2.464,1.105,2.464,2.464S11.359,9.589,10,9.589"></path>
             </svg>
-        </button>
+        </div>
     </div>
+</div>
+
+<button cp-click="$ctrl.openModal()"> abre modal</button>
