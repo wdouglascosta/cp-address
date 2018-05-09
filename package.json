@@ -52,7 +52,7 @@
   "author": "CapivaraJS Team",
   "license": "LGPL-3.0",
   "dependencies": {
-    "capivarajs": "^2.3.1",
+    "capivarajs": "^2.3.3",
     "maskerjs": "^1.8.3"
   }
 }

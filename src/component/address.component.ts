@@ -11,6 +11,7 @@ import translate from './address.translate';
 import { TIMEOUT } from 'dns';
 import modalFindAddressTemplate from './findAddressModal/modal.template.html';
 import { ModalFindAddressController } from './findAddressModal/modal.template';
+import { AddressService } from './address.service';
 
 export class CapivaraAddress {
     public $constants;
@@ -69,28 +70,6 @@ export class CapivaraAddress {
             this.element.classList.remove('cp-invalid')
         }
     }
-    /**
-     * 
-     * @method return Promisse with the answer from a HTTP request
-     * This method is asynchronous
-     * resp: contains the JSON with the response text of the request
-     * rej: contains the JSON with the status text of the request
-     * @param url 
-     */
-    getFromApi(url): Promise<any> {
-        return new Promise((resp, rej) => {
-            const httpReq = new XMLHttpRequest();
-            httpReq.onload = () => {
-                if (httpReq.status === 200) {
-                    resp(JSON.parse(httpReq.responseText));
-                } else {
-                    rej(JSON.parse(httpReq.statusText));
-                }
-            }
-            httpReq.open("GET", url, true);
-            httpReq.send();
-        });
-    }
 
     /**
      * @method void
@@ -101,7 +80,7 @@ export class CapivaraAddress {
     searchZipCode($event) {
         this.address.cep = $event.target.value;
         if (this.address && this.address.cep && this.address.cep.length == 9) {
-            this.getFromApi('http://45.33.100.20/services-api/public/busca-cep/' + this.address.cep).then((resp) => {
+            AddressService.getFromApi('http://45.33.100.20/services-api/public/busca-cep/' + this.address.cep).then((resp) => {
                 this.autoFill(resp); //TODO utilizar uma constante para a url
             });
         } else {
@@ -136,7 +115,7 @@ export class CapivaraAddress {
             formattedAddress = `${this.address.streetType} ${this.address.street}, ${this.address.number} ${this.address.neighborhood} ${this.address.city}`;
         }
         if (formattedAddress != '') {
-            this.getFromApi('http://maps.google.com/maps/api/geocode/json?address=' + formattedAddress).then((resp) => {
+            AddressService.getFromApi('http://maps.google.com/maps/api/geocode/json?address=' + formattedAddress).then((resp) => {
                 if ((resp.results.length > 0) && (resp.results[0].geometry.location)) {
                     const coords = resp.results[0].geometry.location;
                     if (coords.lat && coords.lng) {
@@ -247,6 +226,10 @@ export class CapivaraAddress {
         const modalInstance = this.createModal({
             keyboard: true,
             params: Object.assign(this.$constants, this.labels)
-        })
+        });
+
+        modalInstance.onClose = (umValor) => {
+            console.log(umValor);
+        };
     }
 }

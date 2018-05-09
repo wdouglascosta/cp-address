@@ -11,9 +11,62 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 .cp-address-modal-content {
-    background-color: #fefefe;
+    background-color: #FEFEFE;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 45%;
+    border-radius: 6px;
+    box-shadow: 4px 4px 16px 0 rgba(rgb(0, 0, 0), 0.45);
+    overflow: -webkit-paged-y;
+    
 }
+.cp-address-tr{
+    position: relative;
+    padding: 1px;
+    margin: 2px 0 0;
+    font-size: 12px;
+    list-style: none;
+    background-color: #fff;
+
+    max-height: 230px;
+
+    cursor: pointer;
+    &:hover {
+        color: #337ab7;
+    }
+    .cp-address-th{
+        
+        // background: blue;
+        // width: 100%;
+        padding: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: left;
+        font-family: sans-serif;
+
+        cp-transclude{
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+.stripped {
+    background: rgb(225, 226, 225);
+}
+.cp-address-tr-div {
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    max-height: 230px;
+}
+
+.cp-address-table {
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 11pt;
+    max-height: 230px;
+    overflow: scroll;
+}
+
