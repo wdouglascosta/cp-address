@@ -25,8 +25,8 @@ export class CapivaraAddress {
 
     private modal = document.getElementsByClassName("cp-address-modal")
 
-    constructor(scope) {
-        this.element = scope.element;
+    constructor($element) {
+        this.element = $element;
         this.$constants = this.$constants || {};
     }
 
@@ -43,6 +43,12 @@ export class CapivaraAddress {
     $onChanges() {
         this.verifyValidForm();
         this.verifyEnableMaps();
+        this.setModelValue();
+
+    }
+
+    setModelValue() {
+        this.$bindings.cpModel = this.address;
     }
 
     verifyEnableMaps() {
@@ -77,16 +83,17 @@ export class CapivaraAddress {
      * Verify if the lenght data corresponds with a brazilian zip code;
      * @param   
      */
-    searchZipCode($event) {
-        this.address.cep = $event.target.value;
+    searchZipCode($event?) {
+        this.address.cep = this.address.cep || $event.target.value;
         if (this.address && this.address.cep && this.address.cep.length == 9) {
             AddressService.getFromApi('http://45.33.100.20/services-api/public/busca-cep/' + this.address.cep).then((resp) => {
-                this.autoFill(resp); //TODO utilizar uma constante para a url
+                this.autoFill(resp);
             });
         } else {
             delete this.address.cep;
         }
     }
+    
 
     private formatAddress() {
         var formattedAddress = 'empty';
@@ -217,19 +224,20 @@ export class CapivaraAddress {
 
             this.close = close;
             this.ok = ok;
-
         };
         return new ModalInstance(config);
     }
 
-    openModal(){
+    openModal() {
         const modalInstance = this.createModal({
             keyboard: true,
             params: Object.assign(this.$constants, this.labels)
         });
 
-        modalInstance.onClose = (umValor) => {
-            console.log(umValor);
+        modalInstance.onClose = (cep) => {
+            console.log(cep);
+            this.address.cep = cep;
+            this.searchZipCode();
         };
     }
 }

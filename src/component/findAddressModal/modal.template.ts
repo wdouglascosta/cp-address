@@ -11,31 +11,29 @@ export class ModalFindAddressController {
     private streets = "";
     private street = "";
     private debounce;
+    private lookingForAddress = false;
+    private emptyResult = false
 
     constructor(scope) {
     }
 
     searchCity(newValue) {
-        console.log(newValue)
         AddressService.getFromApi('http://45.33.100.20/services-api/public/buscar-cidades?uf=' + newValue).then((resp) => {
-            this.cities = resp; //TODO utilizar uma constante para a url
-            // this.city = resp[0]
+            this.cities = resp;
         });
     }
 
-    // searchStreet(newValue) {
-    //     AddressService.getFromApi('http://45.33.100.20/services-api/public/buscar-logradouros?uf=' + this.uf + '&cidade=' + newValue).then((resp) => {
-            
-    //         console.log(this.streets)
-    //     })
-    // }
-
-    searchFullAddress(newValue){
-        AddressService.getFromApi('http://45.33.100.20/services-api/public/buscar-endereco-completo?uf='+this.uf+'&cidade='+this.city+'&logradouro='+newValue)
-        .then((resp) => {
-            this.streets = resp;
-            console.log(resp);
-        })
+    searchFullAddress(newValue) {
+        this.emptyResult = false;
+        this.lookingForAddress = true;
+        AddressService.getFromApi('http://45.33.100.20/services-api/public/buscar-endereco-completo?uf=' + this.uf + '&cidade=' + this.city + '&logradouro=' + newValue)
+            .then((resp) => {
+                this.streets = resp;
+                this.lookingForAddress = false;
+                if (this.streets.length == 0) {
+                    this.emptyResult = true;
+                }
+            });
     }
 
     private inputSearch(evt) {
@@ -45,7 +43,7 @@ export class ModalFindAddressController {
         this.debounce = setTimeout(() => this.searchFullAddress(evt.target.value), 1000);
     }
 
-    select(cep){
+    select(cep) {
         this.params.modalInstance.close(cep);
     }
 

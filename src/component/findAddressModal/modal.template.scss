@@ -69,4 +69,13 @@
     max-height: 230px;
     overflow: scroll;
 }
+.cp-address-modal-flag{
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    .cp-icon1 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
 

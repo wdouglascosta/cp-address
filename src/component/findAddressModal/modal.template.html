@@ -64,7 +64,15 @@
 
                 </div>
 
-
+            </div>
+            <div class="cp-address-modal-flag" cp-hide="!$ctrl.lookingForAddress">
+                <div class="cp-icon1">
+                    <img src="../docs/icon1.png"></img>
+                </div>
+                <h4>Buscando, aguarde um momento...</h4>
+            </div>
+            <div class="cp-address-modal-flag" cp-hide="!$ctrl.emptyResult">
+                <h4>Nenhum registro encontrado.</h4>
             </div>
             <div class="cp-address-row" cp-hide="$ctrl.streets == ''">
                 <div class="cp-input-floating cp-flex-1">
