@@ -1,12 +1,10 @@
 <div class="cp-address-modal">
     <div class="cp-address-modal-content">
         <h2>Buscar Cep</h2>
-
         <div class="cp-address-container">
-            <div class="cp-address-row " cp-hide="$ctrl.$constants.hiddenCountry">
+            <div class="cp-address-row ">
                 <div class="cp-input-floating cp-flex-1">
-                    <select class="cp-select cp-input" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.uf.required && !$ctrl.address.uf) }"
-                        cp-model="$ctrl.uf" cp-change="$ctrl.searchCity($newValue)" cp-keypress.enter="$ctrl.focusFirstInputEmpty()">
+                    <select class="cp-select cp-input" cp-model="$ctrl.uf" cp-change="$ctrl.searchCity($newValue)" cp-keypress.enter="$ctrl.focusFirstInputEmpty()">
                         <option value="AC" selected="selected">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
@@ -39,31 +37,23 @@
                         ${ params.state }
                     </label>
                 </div>
-
                 <div class="cp-input-floating cp-flex-1">
                     <select class="cp-select cp-input" cp-model="$ctrl.city">
-                        <!-- <option selected>Selecione a Cidade</option> -->
                         <option cp-repeat="obj in $ctrl.cities">[[obj]]</option>
                         <option></option>
-
                     </select>
                     <label class="form-label cp-address-label " cp-class="{ 'active' : $ctrl.city }">
                         ${ params.city }
                     </label>
                 </div>
             </div>
-
             <div class="cp-address-row ">
                 <div class="cp-input-floating cp-flex-1">
-
                     <input cp-model="$ctrl.street" class="cp-input" cp-keyup="$ctrl.inputSearch($event)" type="text">
-
                     <label class="form-label cp-address-label " cp-class="{ 'active' : $ctrl.street }">
                         ${ params.street }
                     </label>
-
                 </div>
-
             </div>
             <div class="cp-address-modal-flag" cp-hide="!$ctrl.lookingForAddress">
                 <div class="cp-icon1">
@@ -82,11 +72,9 @@
                                 <th>
                                     Bairro
                                 </th>
-
                                 <th>
                                     Logradouro
                                 </th>
-
                                 <th>
                                     CEP
                                 </th>
@@ -99,9 +87,7 @@
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 </div>

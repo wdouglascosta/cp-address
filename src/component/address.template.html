@@ -128,18 +128,16 @@
     </div>
 
     <div class="cp-address-row" cp-hide="$ctrl.$constants.hiddenCodes">
-        <div class="cp-input-floating cp-flex-1">
+        <div class="cp-input-floating cp-flex-1" cp-hide="$ctrl.$constants.hiddenCityCode">
             <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.cityCode.required && !$ctrl.address.ibgecode) }"
-                cp-model="$ctrl.address.ibgecode" cp-hide="$ctrl.$constants.hiddenCityCode" cp-keypress.enter="$ctrl.focusFirstInputEmpty()"
-            />
+                cp-model="$ctrl.address.ibgecode" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
             <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.ibgecode }">
                 ${ labels.ibgecode }
             </label>
         </div>
-        <div class="cp-input-floating cp-flex-1">
+        <div class="cp-input-floating cp-flex-1" cp-hide="$ctrl.$constants.hiddenStateCode">
             <input class="cp-input cp-100" cp-class="{ 'cp-invalid-required' : ($ctrl.$constants.stateCode.required && !$ctrl.address.ufCode) }"
-                cp-model="$ctrl.address.ufCode" cp-hide="$ctrl.$constants.hiddenStateCode" cp-keypress.enter="$ctrl.focusFirstInputEmpty()"
-            />
+                cp-model="$ctrl.address.ufCode" cp-keypress.enter="$ctrl.focusFirstInputEmpty()" />
             <label class="form-label cp-address-label" cp-class="{ 'active' : $ctrl.address.ufCode }">
                 ${ labels.statecode }
             </label>

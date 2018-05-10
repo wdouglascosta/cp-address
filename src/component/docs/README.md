@@ -121,12 +121,31 @@ capivara.controller(document.body, MyController);
 
 ```
 ## Objeto de config
-| Atributo: Default      | Tipo          | Descrição |
-| ------------- |:-------------:| -----:|
-| width: 170px      | string | Define a largura da área de visualização. |
-| height: 170px      | string | Define a altura da área de visualização. |
-| crop      | CropConfig | Configuração da área de recorte. |
-| drive      | DriveConfig | Configuração do google drive. |
+| Atributo              | Tipo    | Descrição                                  |
+|-----------------------|---------|--------------------------------------------|
+| lang                  | string  | Linguagem (padrão: pt-br)                  |
+| hidden-zip            | boolean | Ocultar campo CEP                          |
+| required-zip          | boolean | CEP não pode ser vazio                     |
+| hidden-country        | boolean | Ocultar campo País                         |
+| required-country      | boolean | País não pode ser vazio                    |
+| hidden-street         | boolean | Ocultar campo Logradouro                   |
+| required-street       | boolean | Logradouro não pode ser vazio              |
+| hidden-information    | boolean | Ocultar campo Complemento                  |
+| required-information  | boolean | Complemento não pode ser vazio             |
+| hidden-number         | boolean | Ocultar campo Número                       |
+| required-number       | boolean | Número não pode ser vazio                  |
+| hidden-neighborhood   | boolean | Ocultar campo Bairro                       |
+| required-neighborhood | boolean | Bairro não pode ser vazio                  |
+| hidden-city           | boolean | Ocultar campo Cidade                       |
+| required-city         | boolean | Cidade não pode ser vazio                  |
+| hidden-uf             | boolean | Ocultar campo Estado                       |
+| required-uf           | boolean | Estado não pode ser vazio                  |
+| hidden-city-code      | boolean | Ocultar campo Cód. Municipal IBGE          |
+| required-city-code    | boolean | Cód. Municipal IBGE não pode ser vazio     |
+| hidden-state-code     | boolean | Ocultar campo Cód. Estadual IBGE           |
+| required-state-code   | boolean | Cód. Estadual IBGE não pode ser vazio      |
+| hidden-coordinates    | boolean | Ocultar campos de Coordenadas              |
+| required-coordinates  | boolean | Campos de Coordenadas não podem ser vazios |
 
 ## CropConfig
 

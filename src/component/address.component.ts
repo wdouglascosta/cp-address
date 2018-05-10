@@ -22,7 +22,6 @@ export class CapivaraAddress {
     private labels;
     private enableMaps = true;
     private buttonTitle;
-
     private modal = document.getElementsByClassName("cp-address-modal")
 
     constructor($element) {
@@ -134,7 +133,6 @@ export class CapivaraAddress {
         }
     }
 
-
     /**
      * @method void 
      * Fill the address data with the object found 
@@ -182,6 +180,8 @@ export class CapivaraAddress {
 
 
     createModal(config) {
+        console.log(this.$constants)
+        
         const ModalInstance = function (instanceConfig) {
             const modal = document.createElement('div');
             modal.innerHTML = modalFindAddressTemplate;

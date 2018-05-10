@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,30 +19,21 @@
         justify-content: center;
 
     }
-
     .col-md-6 {
         width: 600px;
         height: 500px;
     }
 </style>
-
 <body>
-
     <div class="col-md-6">
-        <cp-address></cp-address>
+        <cp-address hidden-country="true" hidden-city-code="true"> </cp-address>
     </div>
-
     <script src="dist/cp-address.js"></script>
-
     <script>
-
         class MyControllerTest {
             constructor() {
             }
         }
-
     </script>
-
 </body>
-
 </html>
